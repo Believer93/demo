@@ -1,0 +1,19 @@
+<div class="dashboard-container">
+    <div>
+        <div>
+            <div style="display: block">
+                <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+                    [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+                </canvas>
+            </div>
+        </div>
+        <div id="example-radio-group-label" style="margin-top: 10px;margin-bottom: 5px;">Change view</div>
+        <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group">
+            <mat-radio-button class="example-radio-button" style="margin-right: 5px" *ngFor="let types of bartypes"
+                (click)="randomize(types)">
+                {{types}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+</div>

@@ -1,0 +1,70 @@
+<!------ Include the above in your HEAD tag ---------->
+
+<div id="throbber" style="display:none; min-height:120px;"></div>
+<div id="noty-holder"></div>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <a class="sr-only">Toggle navigation</a>
+                <a class="icon-bar"></a>
+                <a class="icon-bar">Welcome {{dataStore.getData('userDetails').user_id}}</a>
+                <a class="icon-bar"></a>
+            </button>
+            <a class="navbar-brand" href="http://cijulenlinea.ucr.ac.cr/dev-users/">
+                <h3 class="icon-bar">FMS</h3>
+            </a>
+        </div>
+        <!-- Top Menu Items -->
+        <ul class="nav navbar-right top-nav">
+            <li><a data-placement="bottom" data-toggle="tooltip" data-original-title="Stats"><i
+                        class="fa fa-bar-chart-o"></i>
+                </a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">{{dataStore.getData('userDetails')[0].user_id}}</a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" style="cursor: pointer" (click)="logout()">Log Out</a>
+            </li>
+
+        </ul>
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+
+                <li *ngIf="dataStore.getData('userDetails')[0].role ==='SuperAdmin'" style="cursor: pointer">
+                    <a (click)="gotoDashboard()"><i class="fa fa-fw fa-paper-plane-o"></i>Dashboard</a>
+                </li>
+                <li style="cursor: pointer"
+                    *ngIf="dataStore.getData('userDetails')[0].role ==='SuperAdmin' || dataStore.getData('userDetails')[0].role ==='Admin'">
+                    <a (click)="gotoUserDetails()"><i class="fa fa-fw fa-paper-plane-o"></i>User Details</a>
+                </li>
+                <!-- <li>
+                   <a><i class="fa fa-fw fa-paper-plane-o"></i>Add User</a>
+                </li> -->
+                <li style="cursor: pointer">
+                    <a (click)="gotoEmpDetails()"><i class="fa fa-fw fa-paper-plane-o"></i>Employee Details</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row" id="main">
+                <div class="col-sm-12 col-md-12 p-top-20" id="content">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container-fluid -->
+    </div>
+    <!-- /#page-wrapper -->
+</div><!-- /#wrapper -->

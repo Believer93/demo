@@ -1,0 +1,116 @@
+<div>
+    <h3>
+        Employee Seat-Asset Details
+    </h3>
+    <input type="text" class="search-box" placeholder="Type to filter the column..." (keyup)="updateFilter($event)" />
+    <button color="primary" mat-raised-button="" class="mat-raised-button mat-primary button-format"
+        (click)="openAddDialog()"><span class="mat-button-wrapper">Add</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </button>
+    <button color="warn" mat-raised-button="" class="mat-raised-button mat-warn button-format"
+        (click)="openDeleteDialog()"><span class="mat-button-wrapper">Delete</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </button>
+    <ngx-datatable #mydatatable class="material" [headerHeight]="50" [limit]="10" [columnMode]="'force'"
+        [footerHeight]="50" [rowHeight]="'auto'" [rows]="rows">
+        <ngx-datatable-column name="Emp Id">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit">
+                    {{row.emp_id}}
+                </span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Emp Name">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit" (dblclick)="editing[rowIndex + '-emp_name'] = true"
+                    *ngIf="!editing[rowIndex + '-emp_name']">
+                    {{row.emp_name}}
+                </span>
+                <input autofocus (blur)="updateValue($event, 'emp_name', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-emp_name']" type="text" [value]="row.emp_name" />
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Asset Type">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit" (dblclick)="editing[rowIndex + '-asset_type'] = true"
+                    *ngIf="!editing[rowIndex + '-asset_type']">
+                    {{row.asset_type}}
+                </span>
+                <input autofocus (blur)="updateValue($event, 'asset_type', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-asset_type']" type="text" [value]="row.asset_type" />
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Asset ID">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit" (dblclick)="editing[rowIndex + '-asset_id'] = true"
+                    *ngIf="!editing[rowIndex + '-asset_id']">
+                    {{row.asset_id}}
+                </span>
+                <input autofocus (blur)="updateValue($event, 'asset_id', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-asset_id']" type="text" [value]="row.asset_id" />
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Floor No">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit" (dblclick)="editing[rowIndex + '-floor_num'] = true"
+                    *ngIf="!editing[rowIndex + '-floor_num']">
+                    {{row.floor_num}}
+                </span>
+                <input autofocus (blur)="updateValue($event, 'floor_num', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-floor_num']" type="text" [value]="row.floor_num" />
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Seat No">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit" (dblclick)="editing[rowIndex + '-seat_num'] = true"
+                    *ngIf="!editing[rowIndex + '-seat_num']">
+                    {{row.seat_num}}
+                </span>
+                <input autofocus (blur)="updateValue($event, 'seat_num', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-seat_num']" type="text" [value]="row.seat_num" />
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Source Project">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit" (dblclick)="editing[rowIndex + '-source_prjct'] = true"
+                    *ngIf="!editing[rowIndex + '-source_prjct']">
+                    {{row.source_prjct}}
+                </span>
+                <input autofocus (blur)="updateValue($event, 'source_prjct', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-source_prjct']" type="text" [value]="row.source_prjct" />
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Team Name">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit" (dblclick)="editing[rowIndex + '-team_name'] = true"
+                    *ngIf="!editing[rowIndex + '-team_name']">
+                    {{row.team_name}}
+                </span>
+                <input autofocus (blur)="updateValue($event, 'team_name', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-team_name']" type="text" [value]="row.team_name" />
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Multi Asset">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit" (dblclick)="editing[rowIndex + '-multitagged_asset_id'] = true"
+                    *ngIf="!editing[rowIndex + '-multitagged_asset_id']">
+                    {{row.multitagged_asset_id}}
+                </span>
+                <input autofocus (blur)="updateValue($event, 'multitagged_asset_id', rowIndex)"
+                    *ngIf="editing[rowIndex+ '-multitagged_asset_id']" type="text" [value]="row.multitagged_asset_id" />
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="ODC">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit" (dblclick)="editing[rowIndex + '-odc'] = true"
+                    *ngIf="!editing[rowIndex + '-odc']">
+                    {{row.odc}}
+                </span>
+                <input autofocus (blur)="updateValue($event, 'odc', rowIndex)" *ngIf="editing[rowIndex+ '-odc']"
+                    type="text" [value]="row.odc" />
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</div>

@@ -1,0 +1,54 @@
+<div>
+    <h3>
+        User Details
+    </h3>
+    <input type="text" class="search-box" placeholder="Type to filter the column..." (keyup)="updateFilter($event)" />
+    <button color="primary" mat-raised-button="" class="mat-raised-button mat-primary button-format"
+        (click)="openAddDialog()"><span class="mat-button-wrapper">Add</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </button>
+    <button color="warn" mat-raised-button="" class="mat-raised-button mat-warn button-format"
+        (click)="openDeleteDialog()"><span class="mat-button-wrapper">Delete</span>
+        <div class="mat-button-ripple mat-ripple" matripple=""></div>
+        <div class="mat-button-focus-overlay"></div>
+    </button>
+    <ngx-datatable #mydatatable class="material" [headerHeight]="50" [limit]="10" [columnMode]="'force'"
+        [footerHeight]="50" [rowHeight]="'auto'" [rows]="rows">
+        <ngx-datatable-column name="User Id">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit">
+                    {{row.user_id}}
+                </span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="User Name">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit">
+                    {{row.user_name}}
+                </span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Role">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit">
+                    {{row.role}}
+                </span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Team Name">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit">
+                    {{row.team_name}}
+                </span>
+            </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="ODC">
+            <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row">
+                <span title="Double click to edit">
+                    {{row.odc}}
+                </span>
+            </ng-template>
+        </ngx-datatable-column>
+    </ngx-datatable>
+</div>

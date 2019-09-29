@@ -1,0 +1,52 @@
+<ng-container *ngIf="data.isDelete">
+  <h1 mat-dialog-title>Delete User Details</h1>
+  <div mat-dialog-content>
+    <p>User ID</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.user_id">
+    </mat-form-field>
+  </div>
+</ng-container>
+<ng-container *ngIf="!data.isDelete">
+  <h1 mat-dialog-title>Add User Details</h1>
+  <div mat-dialog-content>
+    <p>User ID</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.user_id">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-content>
+    <p>User Password</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.password" type="password">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-content>
+    <p>User Name</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.user_name">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-content>
+    <p>Role</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.role">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-content>
+    <p>Team Name</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.team_name">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-content>
+    <p>ODC</p>
+    <mat-form-field>
+      <input matInput [(ngModel)]="data.odc">
+    </mat-form-field>
+  </div>
+</ng-container>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Confirm</button>
+</div>
